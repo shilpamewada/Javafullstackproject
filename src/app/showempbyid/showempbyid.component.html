@@ -1,0 +1,53 @@
+
+<h2 style="color: blue;">Welcome {{emailId}}!</h2>
+
+<div>
+    <form #empForm="ngForm" (ngSubmit)="getEmployee(empForm.value)">
+        <table align="center">
+            <tr>
+                <td>Enter EmployeeId</td>
+                <td><input type="text" name="empId" ngModel /></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><button>Get Employee</button></td>
+            </tr>
+        </table>
+    </form>
+</div> <br/>
+
+
+<div *ngIf="emp;else noEmp" class="container">
+    <table class="table table-sm table-hover table-striped table-bordered">
+        <thead>
+            <tr align="center">
+                <th class="bg-info text-white">EmpId</th>
+                <th class="bg-info text-white">EmpName</th>
+                <th class="bg-info text-white">Salary</th>
+                <th class="bg-info text-white">Gender</th>
+                <th class="bg-info text-white">DOJ</th>
+                <th class="bg-info text-white">Country</th>
+                <th class="bg-info text-white">Mobile</th>
+                <th class="bg-info text-white">EmailId</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{emp.empId}}</td>
+                <td>{{emp.empName}}</td>
+                <td>{{emp.salary}}</td>
+                <td>{{emp.gender}}</td>
+                <td>{{emp.doj}}</td>
+                <td>{{emp.country}}</td>
+                <td>{{emp.mobile}}</td>
+                <td>{{emp.emailId}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<ng-template #noEmp>
+    <div class="container" >
+        <h3 style="color: red;" align="center">{{msg}}</h3>
+    </div>
+</ng-template>

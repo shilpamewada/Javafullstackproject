@@ -1,0 +1,29 @@
+<!-- header.component.html -->
+
+<nav>
+  <div class="navbar" [ngClass]="{ 'sticky': isSticky }">
+    <div class="logo">
+      <img src="https://voters.eci.gov.in/static/media/Portallogo.239672214918b407e9c7d3e4312b8ac4.svg" alt="HomeImage" class="logo-image">
+      <div class="logo-texts">
+        <div>मतदाता सेवा पोर्टल</div>
+        <div>VOTERS’ SERVICE PORTAL</div>
+      </div>
+    </div>
+    <div class="menu-toggle" (click)="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+    <ul class="nav-links" [ngClass]="{ 'active': isMenuActive }">
+      <li><a routerLink="/" (click)="toggleMenu()"><i class="fas fa-home"></i> Home</a></li>
+      <li><a routerLink="/" (click)="toggleMenu()"><i class="fas fa-check-circle"></i> How It Works</a></li>
+      <li><a routerLink="/contacts" (click)="toggleMenu()"><i class="fas fa-address-book"></i> About Us</a></li>
+      <li class="dropdown">
+        <a href="javascript:void(0);" class="dropbtn"><i class="fas fa-bars"></i></a>
+        <div class="dropdown-content">
+          <a routerLink="/login" (click)="toggleMenu()"><i class="fas fa-sign-in-alt"></i> Login</a>
+          <a (click)="logout(); toggleMenu()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          <a routerLink="/register" (click)="toggleMenu()"><i class="fas fa-user-plus"></i> Sign up</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,124 @@
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+</head>
+
+<h2 style="color: blue;">Welcome {{emailId}}!</h2>
+<h1 align="center">Show Employees</h1>
+
+<div class="container">
+    <table class="table table-sm table-hover table-striped table-bordered">
+        <thead>
+            <tr align="center">
+                <th class="bg-info text-white">EmpId</th>
+                <th class="bg-info text-white">EmpName</th>
+                <th class="bg-info text-white">Salary</th>
+                <th class="bg-info text-white">Gender</th>
+                <th class="bg-info text-white">DOJ</th>
+                <th class="bg-info text-white">Country</th>
+                <th class="bg-info text-white">Mobile</th>
+                <th class="bg-info text-white">EmailId</th>
+                <th class="bg-info text-white">Experience</th>
+                <th class="bg-info text-white" colspan="2" align="center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let emp of employees">
+                <td> {{ emp.empId                                   }} </td>
+                <td> {{ emp.empName | gender:emp.gender | uppercase }} </td>
+                <td> {{ emp.salary  | currency: 'INR'               }} </td>
+                <td> {{ emp.gender  | lowercase                     }} </td>
+                <td> {{ emp.doj     | date:'dd-MMM-yyy'             }} </td>
+                <td> {{ emp.country                                 }} </td>
+                <td> {{ emp.mobile                                  }} </td>
+                <td> {{ emp.emailId                                 }} </td>
+                <td> {{ emp.doj     | exp                           }} </td>
+                <td> <button (click)="editEmp(emp)" class="btn glyphicon glyphicon-pencil"></button> </td>
+                <td> <button (click)="deleteEmp(emp.empId)" class="btn glyphicon glyphicon-trash"></button> </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+  <div class="modal fade" id="editEmp" role="dialog">
+    <div class="modal-dialog">    
+      <div class="modal-content">
+      
+        <div class="modal-header">
+          <h4 class="modal-title">Update Employee</h4>
+          <button type="button" style="margin-left: 300px;" class="close" data-dismiss="modal">&times;</button>
+         </div>
+        
+        <div class="modal-body">
+            <table align="center">
+                <tbody>
+                    <tr>
+                        <td>EmpId</td>
+                        <td><input type="text" name="empId" [(ngModel)]="editObj.empId" readonly/></td>
+                    </tr>
+                    <tr>
+                        <td>EmpName</td>
+                        <td><input type="text" name="empName" [(ngModel)]="editObj.empName"/></td>
+                    </tr>
+                    <tr>
+                        <td>Salary</td>
+                        <td><input type="text" name="salary" [(ngModel)]="editObj.salary"/></td>
+                    </tr>
+                    <tr>
+                        <td>Gender</td>
+                        <td>
+                            <select name="gender" [(ngModel)]="editObj.gender">
+                                <option value="{{editObj.gender}}" selected>{{editObj.gender}}</option>
+                                <option value="Male">   Male   </option>
+                                <option value="Female"> Female </option>
+                                <option value="Others"> Others </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>DateOfJoin</td>
+                        <td><input type="date" name="doj" [(ngModel)]="editObj.doj"/></td>
+                    </tr>
+                    <tr>
+                        <td>Mobile</td>
+                        <td><input type="text" name="mobile" [(ngModel)]="editObj.mobile"/></td>
+                    </tr>
+                    <tr>
+                        <td>Country</td>
+                        <td>
+                            <select name="country" [(ngModel)]="editObj.country">
+                                <option value="{{editObj.country}}" selected>{{editObj.country}}</option>
+                                <option value="{{country.cca3}}" *ngFor="let country of countries"> {{country.name.common}} </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>EmailId</td>
+                        <td><input type="text" name="emailId" [(ngModel)]="editObj.emailId" readonly/></td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td><input type="password" name="password" [(ngModel)]="editObj.password" readonly /></td>
+                    </tr>
+                    <tr>
+                        <td>Department</td>
+                        <td>
+                            <select name="deptId" [(ngModel)]="editObj.department.deptId">
+                                <option value="{{editObj.department.deptId}}" selected>{{editObj.department.deptName}}</option>
+                                <option value={{department.deptId}} *ngFor="let department of departments">{{department.deptName}}</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>   
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" (click)="updateEmployee()" class="btn btn-default" data-dismiss="modal">Update Employee</button>
+        </div>
+        
+      </div>      
+    </div>
+  </div>
+  

@@ -1,0 +1,30 @@
+<div class="registration-container">
+    <h2>Voter Registration</h2>
+    <form (ngSubmit)="register()" #registrationForm="ngForm">
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" [(ngModel)]="fullName" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" [(ngModel)]="email" required email>
+      </div>
+      <div class="form-group">
+        <label for="mobileNumber">Mobile Number</label>
+        <input type="text" id="mobileNumber" name="mobileNumber" [(ngModel)]="mobileNumber" required>
+      </div>
+      <div class="form-group">
+        <label for="address">Address</label>
+        <textarea id="address" name="address" [(ngModel)]="address" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="voterId">Voter ID</label>
+        <input type="text" id="voterId" name="voterId" [(ngModel)]="voterId" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" [(ngModel)]="password" required>
+      </div>
+      <button type="submit" class="btn btn-primary custom-btn">Register</button>
+    </form>
+</div>

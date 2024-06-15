@@ -1,0 +1,23 @@
+Enter Id:   <input type="text" name="id"   [(ngModel)]="person.id"   /> <br/>
+Enter Name: <input type="text" name="name" [(ngModel)]="person.name" /> <br/>
+
+
+<button (click)="btnSubmit()">Submit</button>
+<br/> <br/>
+
+id:   {{person.id}} <br/>
+name: {{person.name}} <br/>
+age:  {{person.age}} <br/><br/>
+
+<u><b>Address</b></u><br/>
+StreetNo: {{person.address.streetNo}} <br/>
+City    : {{person.address.city}} <br/>
+State   : {{person.address.state}} <br/> <br/>
+
+<u><b>Hobbies</b></u><br/>
+<ul>
+    <li *ngFor="let hobby of person.hobbies">{{hobby}}</li>
+</ul>
+<br/> <br/>
+
+
